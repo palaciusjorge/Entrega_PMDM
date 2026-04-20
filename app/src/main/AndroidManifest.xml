@@ -12,13 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activities.SportSelectionActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.VideoPlayerActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activities.VideoListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.SportsSelectionActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"

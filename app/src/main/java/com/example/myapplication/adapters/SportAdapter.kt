@@ -5,37 +5,40 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.activities.VideoPlayerActivity
-import com.example.myapplication.models.Video
+import com.example.myapplication.activities.VideoListActivity
+import com.example.myapplication.models.Sport
 
-class VideoAdapter(
+class SportAdapter(
     private val context: Context,
-    private val videoList: List<Video>
-) : RecyclerView.Adapter<VideoAdapter.ViewHolder>() {
+    private val sportList: List<Sport>
+) : RecyclerView.Adapter<SportAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.videoTitle)
+        val image: ImageView = itemView.findViewById(R.id.sportImage)
+        val name: TextView = itemView.findViewById(R.id.sportName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
-            .inflate(R.layout.item_video, parent, false)
+            .inflate(R.layout.item_sport, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val video = videoList[position]
-        holder.title.text = video.title
+        val sport = sportList[position]
+        holder.name.text = sport.name
+        holder.image.setImageResource(sport.imageResId)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, VideoPlayerActivity::class.java)
-            intent.putExtra("videoResId", video.videoResId)
+            val intent = Intent(context, VideoListActivity::class.java)
+            intent.putExtra("sportName", sport.name)
             context.startActivity(intent)
         }
     }
 
-    override fun getItemCount(): Int = videoList.size
+    override fun getItemCount(): Int = sportList.size
 }

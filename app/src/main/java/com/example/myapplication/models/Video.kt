@@ -1,4 +1,6 @@
 package com.example.myapplication.models
 
-class Video {
-}
+data class Video(
+    val title: String,
+    val videoResId: Int
+)
